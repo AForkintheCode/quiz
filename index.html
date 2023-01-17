@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>quiz</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">      
+          <section id = front>
+            <div class="col">
+            <h1 id="title">Code Quiz</h1>
+              <br>
+            <button class = "start">Start</button>            
+            </div>
+          </section>
+      
+<!-- Quiz Section -->
+        <section id = "quiz">
+          <h1 class = "timer"></h1>
+          <div class="row">
+            <div class="col">
+          <h2 id = "question">What is the question?</h2>
+          <br>
+          <section id = "selections">
+            <div class="row mt-2">
+              <div class="col"><button class = "answer" id="answer-a">A</button></div>
+              <div class="col"><button class = "answer" id="answer-b">B</button></div>              
+            </div>
+            <div class="row mt-2">
+              <div class="col"><button class = "answer" id="answer-c">C</button></div>
+              <div class="col"><button class = "answer" id="answer-d">D</button></div>
+            </div>      
+          </section>
+        </section>
+          
+<!-- Score Section -->
+          <section id = "score"> 
+            <main class="my-5 mx-auto">
+              <h1>High Scores</h1>
+              <hr />
+          
+              <h2>Please Enter Your Initials</h2>
+              <form id="high-score">
+                <input type="text" class="form-input w-100" id="score-input" name="score-input" placeholder="Enter item name" />
+                <button class="btn btn-info">Submit</button>
+              </form>
+          
+              <ul id="score-list"></ul>
+            </main> 
+          </section>
+        </div>
+   
+      
+
+  </section>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+  <script src="assets/js/script.js"></script>
+  </body>
+  </html>
