@@ -1,7 +1,7 @@
 # Description
 A multiple choice quiz pertaining to coding.
 
-![screenshot of quiz](quiz.jpg)
+![screenshot of quiz](quiz.JPG)
 
 ## Installation
 n/a
