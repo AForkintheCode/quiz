@@ -135,10 +135,10 @@ function startQuiz() {
           startQuiz();   
           choicesEl[i].removeEventListener("click", function(event){
             event.preventDefault()
-          })
+          });
           }                                  
         }            
-    })
+    });
   }
 }                                   
   
