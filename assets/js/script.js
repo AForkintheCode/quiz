@@ -114,13 +114,9 @@ function startQuiz() {
 
   for (let i=0; i < choicesEl.length ; i++){
     choicesEl[i].onclick = null
-    choicesEl[i].addEventListener("click", buttonClick(){
+    choicesEl[i].addEventListener("click", function(event){
       event.preventDefault();
-      console.log("This is the event target " + event.target.innerHTML)   
-    })
-  }
-}
-  function buttonClick(){
+      console.log("This is the event target " + event.target.innerHTML)           
       if  (event.target.innerHTML === correct){
           console.log('correct answer!');
           if (currentQuestion <=4 && currentQuestion < 5){
@@ -142,9 +138,9 @@ function startQuiz() {
           })
           }                                  
         }            
-    }
-  
-                                  
+    })
+  }
+}                                   
   
   
 function clrData(){
