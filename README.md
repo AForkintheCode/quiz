@@ -12,4 +12,4 @@ To use the application, simply click start.  Choose your answer for the question
 ## License
 This project is licensed under the MIT License.
 
-Application can be found at (https://github.com/AForkintheCode/quiz)[GitHubPages.]
+Application can be found at (https://github.com/AForkintheCode/quiz)
