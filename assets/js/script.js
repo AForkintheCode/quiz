@@ -3,6 +3,7 @@ var startbtn = document.querySelector(".start");
 var timerEl = document.querySelector(".timer");
 var timer;
 var countdown;
+
 //quiz
 var regis = [];
 var questionEl = document.getElementById("question");
@@ -33,8 +34,12 @@ function startTimer() {
         score = timerCount;
         }
  // Tests if time has run out
-    if (timerCount === 0) {
+    else if (timerCount === 0) {
       // Clears interval
+      clearInterval(timer);
+      gameOver();
+    }
+    else if (timerCount < 0) {
       clearInterval(timer);
       gameOver();
     }
@@ -84,17 +89,24 @@ let currentQuestion = 0;
 function startQuiz() {
   clrData();  
   console.log(currentQuestion)
+  
+  //question
   regis = questions[currentQuestion].title;
+  questionEl.textContent = regis;
+  //choices
   selection = questions[currentQuestion].choices;
-  correct = questions[currentQuestion].answer;
-  questionEl.textContent = regis;  
   choiceAEl.textContent = selection[0];
   choiceBEl.textContent = selection[1];
   choiceCEl.textContent = selection[2];
   choiceDEl.textContent = selection[3];
+  //correct answer
+  correct = questions[currentQuestion].answer;
+    
+
   let choicesEl = document.getElementsByClassName('answer')
   console.log("This is the question: " + regis)
   console.log("These are the choices: " + selection)
+  console.log("This is the answer: " + correct)
   console.log(choiceAEl)
   console.log(choiceBEl)
   console.log(choiceCEl)
@@ -107,20 +119,29 @@ function startQuiz() {
       console.log("This is the event target " + event.target.innerHTML)           
       if  (event.target.innerHTML === correct){
           console.log('correct answer!');
+          if (currentQuestion <=4 && currentQuestion < 5){
           currentQuestion++;                          
-          startQuiz();                             
-        }
+          startQuiz();
+          choicesEl[i].removeEventListener("click", function(event){
+            event.preventDefault()
+          })
+          }
+    }                                 
       else if (event.target.innerHTML !== correct){ 
           console.log('wrong answer!');
           timerCount--;
+          if (currentQuestion <=4 && currentQuestion < 5){
           currentQuestion++;          
-          startQuiz();                            
-        }
-      
-      });
-      ;
+          startQuiz();   
+          choicesEl[i].removeEventListener("click", function(event){
+            event.preventDefault()
+          })
+          }                                  
+        }            
+    })
   }
-  }
+}                                   
+  
   
 function clrData(){
     questionEl.textContent = '';    
@@ -162,7 +183,7 @@ function handleFormSubmit(event) {
   );
 
   // print to the page
-  scoreListEl.append(playerScoreItemEl + score);
+  scoreListEl.append(playerScoreItemEl, + score);
 
   // clear the form input element
   $('input[name="score-input"]').val('');
@@ -176,23 +197,16 @@ function handleRemoveItem(event) {
   btnClicked.parent('li').remove();
 }
 
-// use event delegation on the `shoppingListEl` to listen for click on any element with a class of `delete-item-btn`
+// use event delegation on the `scoreListEl` to listen for click on any element with a class of `delete-item-btn`
 scoreListEl.on('click', '.delete-item-btn', handleRemoveItem);
 highScoreEl.on('submit', handleFormSubmit);
 
+function gameOver(){
+  console.log('Sorry out of time!')
+  document.getElementById("quiz").style.display = 'none'
+  document.getElementById("score").style.display = 'block';
+}
 
 
 
 
-
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score
